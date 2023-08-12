@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Monthly Dashboard Report</title>
+    <style>
+      /* Reset some default styles */
+      body,
+      h1,
+      h2,
+      h3,
+      p,
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Body */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #1e1e1e; /* Dark black background */
+        color: #ffffff; /* White text color */
+      }
+
+      /* Container */
+      .container {
+        max-width: 2000px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #292929; /* Dark gray container background */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+
+      /* Headings */
+      h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #ffffff; /* White heading color */
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-top: 30px;
+        color: #dddddd; /* Light gray heading color */
+      }
+
+      /* Horizontal Line */
+      hr {
+        margin: 20px 0;
+        border: none;
+        border-top: 1px solid #777777; /* Gray line color */
+      }
+
+      /* Plot Container */
+      /* Add this CSS code to your <style> tag or external stylesheet */
+
+      .flex-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .plot-container {
+        background-color: #333333; /* Dark gray plot container background */
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+        width: calc(50% - 15px); /* Adjust the width here */
+        box-sizing: border-box;
+      }
+
+      /* Link Styles */
+      a {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      a:hover {
+        color: #0056b3;
+      }
+
+      /* Button Styles */
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      /* Responsive Media Query */
+      @media (max-width: 768px) {
+        .container {
+          padding: 10px;
+        }
+      }
+
+      input[type="file"]::file-selector-button {
+        margin-right: 20px;
+        border: none;
+        background: #084cdf;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+      }
+
+      input[type="file"]::file-selector-button:hover {
+        background: #0d45a5;
+      }
+
+      .flex-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-left: 300px;
+        margin-right: 300px;
+        justify-items: center;
+      }
+
+      .flex-container > div {
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+      }
+
+      label {
+        font-size: large;
+      }
+      .centered-plot {
+        width: 50%; /* Set width to 50% */
+        margin: 0 auto; /* Center horizontally */
+        margin-top: 20px;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="https://cdn.plot.ly/plotly-latest.min.css" /> -->
+  </head>
+  <body id="main-body">
+    <div class="container">
+      <h1>Monthly Dashboard Report</h1>
+      <div class="flex-row">
+        <div class="plot-container" id="plot_div">{{ plot_div | safe }}</div>
+        <div class="plot-container">{{ plot_div_2 | safe }}</div>
+      </div>
+      <div class="flex-row">
+        <div class="plot-container">{{ plot_div_3 | safe }}</div>
+        <div class="plot-container">{{ plot_div_4 | safe }}</div>
+      </div>
+      <div class="flex-row">
+        <div class="plot-container">{{ plot_div_5 | safe }}</div>
+        <div class="plot-container">{{ plot_div_6 | safe }}</div>
+      </div>
+      <div class="plot-container centered-plot">{{ plot_div_7 | safe }}</div>
+      <!-- Apply centered class here -->
+      <!-- Apply full-width class here -->
+    </div>
+    <div class="container">{{ dash_app | safe }}</div>
+    <form method="post" enctype="multipart/form-data">
+      <div class="flex-container">
+        <div>
+          <label for="products_file">Products CSV:</label>
+          <input type="file" name="products_file" accept=".csv" />
+        </div>
+        <div>
+          <label for="stores_file">Stores CSV:</label>
+          <input type="file" name="stores_file" accept=".csv" />
+        </div>
+        <div>
+          <label for="transactions_file">Transactions CSV:</label>
+          <input type="file" name="transactions_file" accept=".csv" />
+        </div>
+        <div>
+          <input class="btn" type="submit" value="Upload" />
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
