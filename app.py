@@ -1,8 +1,5 @@
 from flask import Flask, render_template, request
-import plotly.express as px
 import pandas as pd
-import random
-import numpy as np
 import plotly.express as px
 app = Flask(__name__)
 import plotly.graph_objects as go
